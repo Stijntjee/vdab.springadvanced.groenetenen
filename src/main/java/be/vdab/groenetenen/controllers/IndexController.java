@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/")
-public class IndexController {
+class IndexController {
 
     private String begroeting(){
         int uur = LocalDateTime.now().getHour();

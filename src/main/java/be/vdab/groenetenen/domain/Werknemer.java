@@ -12,8 +12,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "werknemers")
+@NamedEntityGraph(name = Werknemer.MET_FILIAAL, attributeNodes = @NamedAttributeNode("filiaal"))
 public class Werknemer
 {
+    public static final String MET_FILIAAL= "Werknemer.metFiliaal";
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
