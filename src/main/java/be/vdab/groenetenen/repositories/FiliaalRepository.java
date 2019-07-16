@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface FiliaalRepository extends JpaRepository<Filiaal, Long> {
     List<Filiaal> findByAdresPostcodeBetweenOrderByAdresPostcode(int van, int tot);
+    void deleteById(long id);
 }

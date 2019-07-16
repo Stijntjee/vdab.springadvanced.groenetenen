@@ -33,6 +33,7 @@ public class Werknemer
     @NumberFormat(style= NumberFormat.Style.NUMBER)
     @Digits(integer = 10, fraction = 2)
     private BigDecimal wedde;
+    @Column(unique = true)
     private long rijksregisterNr;
 
     //GETTERS
