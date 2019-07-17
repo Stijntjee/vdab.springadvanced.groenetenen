@@ -17,6 +17,7 @@ public class DefaultOfferteService implements OfferteService {
         this.offerteRepository = offerteRepository;
     }
     @Override
+    @Transactional(readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void create(Offerte offerte) {
         offerteRepository.save(offerte);
     }

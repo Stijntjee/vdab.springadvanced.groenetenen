@@ -3,9 +3,7 @@ package be.vdab.groenetenen.domain;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +11,8 @@ import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "offertes")
 public class Offerte implements Serializable {
     public interface Stap1 {}
     public interface Stap2 {}
