@@ -3,5 +3,6 @@ package be.vdab.groenetenen.services;
 import be.vdab.groenetenen.domain.Offerte;
 
 public interface OfferteService {
-    void create(Offerte offerte);
+    void create(Offerte offerte, String offerteURl);
+    void aantalOffertesMail();
 }

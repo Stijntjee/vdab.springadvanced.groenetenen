@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("offertes")
 @SessionAttributes("offerte") //???
@@ -47,14 +51,24 @@ class OfferteController {
     }
 
     @PostMapping(value = "toevoegen", params = "opslaan")
-    public String create(@Validated(Offerte.Stap2.class) Offerte offerte, Errors errors, SessionStatus session)
+    public String create(@Validated(Offerte.Stap2.class) Offerte offerte, Errors errors, SessionStatus session, HttpServletRequest request)
     {
         if (errors.hasErrors())
         {
             return "offerteStap2";
         }
-        offerteService.create(offerte);
+
+        String offertesURL = request.getRequestURL().toString().replace("toevoegen","");
+        offerteService.create(offerte, offertesURL);
+
         session.setComplete();
         return "redirect:/";
+    }
+
+    @GetMapping("{optionalOfferte}")
+    public ModelAndView read(@PathVariable Optional<Offerte> optionalOfferte) {
+        ModelAndView modelAndView = new ModelAndView("offerte");
+        optionalOfferte.ifPresent(offerte -> modelAndView.addObject("offer", offerte));
+        return modelAndView;
     }
 }
