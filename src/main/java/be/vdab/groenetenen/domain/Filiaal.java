@@ -57,6 +57,11 @@ public class Filiaal implements Serializable
     @OneToMany(mappedBy = "filiaal")
     private Set<Werknemer> werknemers;
 
+    //METHODS
+    public void afschrijven()
+    {
+        waardeGebouw = BigDecimal.ZERO;
+    }
 
     //GETTERS
     public long getId() {
